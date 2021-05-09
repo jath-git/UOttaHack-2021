@@ -1,3 +1,6 @@
+# simple API to give user information about food and exercise from a preexisting database
+
+# import external libraries
 from flask import Flask, render_template, request
 import json
 from nutritionix import Nutritionix
@@ -7,8 +10,10 @@ from urllib.parse import urlencode
 nix = Nutritionix(app_id="c1955429",
                   api_key="4e8e629653b6d84fda5ad79b71b805f2")
 
+# initialize flask
 app = Flask(__name__)
 
+# create request routes to get and send necessary dietary information
 @app.route("/", methods = ['POST', 'GET'])
 def index():
     if request.method == 'GET':
